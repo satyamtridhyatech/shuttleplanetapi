@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 use Validator;
 class ApiController extends Controller
 {
+    public function getRideById(){
+        $data = request()->all();
+        $query = new Ride();
+        $query = $query->where(['id'=>$data['id']])->with('additional_info', 'users');
+        if ($query->count() > 0) {
+            $rides = $query->get();
+            return response()->json(['status' => true, 'ride' => $rides]);
+        } else {
+            return response()->json(['status' => false, 'message' => "No ride found"]);
+        }
+    }
     public function getScheduleRide(){
         $data = request()->all();
         $query = new Ride();
@@ -16,6 +27,9 @@ class ApiController extends Controller
         $query = $query->whereDate('journey_date','>=', $journey_date)->with(['users', 'additional_info', 'providers']);
         if($query->count() > 0){
             $rides = $query->get();
+            // for($i=0;$i< $query->count();$i++){
+            //     $rides[$i]['is_third_party'] = 1;
+            // }
             return response()->json(['status' => true, 'rides' => $rides]);
         }else{
             return response()->json(['status' => false, 'message' => "No ride found"]);

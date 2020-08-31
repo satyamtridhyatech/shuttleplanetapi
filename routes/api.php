@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('get-schedule-ride', 'ApiController@getScheduleRide');
 
 Route::post('store-ride', 'ApiController@storeRide');
+
+Route::post('get-ride-by-id', 'ApiController@getRideById');
