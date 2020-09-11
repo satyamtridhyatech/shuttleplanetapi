@@ -24,7 +24,7 @@ class ApiController extends Controller
         $query = new Ride();
         $query = $query->where(['from'=> $data['from'],'to'=>$data['to']])->where('seats_available','>=',$data['seats']);
         $journey_date= Date('Y-m-d',strtotime($data['journey_date']));
-        $query = $query->whereDate('journey_date','>=', $journey_date)->with(['users', 'additional_info', 'providers']);
+        $query = $query->whereDate('journey_date','=', $journey_date)->with(['users', 'additional_info', 'providers']);
         if($query->count() > 0){
             $rides = $query->get();
             // for($i=0;$i< $query->count();$i++){
