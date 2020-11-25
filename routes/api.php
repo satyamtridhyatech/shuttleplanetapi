@@ -23,3 +23,5 @@ Route::post('get-schedule-ride', 'ApiController@getScheduleRide');
 Route::post('store-ride', 'ApiController@storeRide');
 
 Route::post('get-ride-by-id', 'ApiController@getRideById');
+
+Route::post('get-return-ride-by-id', 'ApiController@getReturnRideById');

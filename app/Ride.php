@@ -8,7 +8,7 @@ class Ride extends Model
 {
     protected $table = 'rides';
     protected $fillable = [
-        'provider_id','seats_available','from','from_door','to_door','to','journey_date','return_date','ride_type','days_available','vehicle_type','price','currency_symbol','is_electric_vehicle','batch_id',
+        'provider_id','seats_available','from','from_door','to_door','to','journey_date','return_date','ride_type','days_available','vehicle_type','price','currency_symbol','is_electric_vehicle','batch_id','is_third_party_ride',
     ];
 
     public function additional_info()
