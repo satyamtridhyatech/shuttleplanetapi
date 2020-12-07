@@ -81,7 +81,7 @@ class ApiController extends Controller
         $ride->days_available = $days_available;
         $ride->seats_available = $data["seats_available"];
         $ride->vehicle_type = $data["vehicle_type"];
-        $ride->price = $price_in_usd;
+        $ride->price = $data["price"];
         $ride->price_in_gbp = $price_in_gbp;
         $ride->currency_symbol = $data["currency_symbol"];
       //  $ride->batch_id = $data["batch_id"];
