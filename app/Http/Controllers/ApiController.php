@@ -150,4 +150,20 @@ class ApiController extends Controller
             return response()->json(['status' => false, 'message' => "No ride found"]);
         }
     }
+
+    public function addRideSeats(){
+        $data = request()->all();
+        $ride = Ride::where('id',$data['id'])->first();
+                $ride->seats_available = ($ride->seats_available + $data['seat_booked']);
+                $ride->save();
+            return response()->json(['status' => true]);
+    }
+
+    public function subtractRideSeats(){
+        $data = request()->all();
+        $ride = Ride::where('id',$data['id'])->first();
+                $ride->seats_available = ($ride->seats_available - $data['seat_booked']);
+                $ride->save();
+            return response()->json(['status' => true]);
+    }
 }
